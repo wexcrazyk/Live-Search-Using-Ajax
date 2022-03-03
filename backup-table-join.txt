@@ -1,0 +1,94 @@
+<?php
+include_once 'conn.php';
+$result = mysqli_query($conn,"SELECT Orders.OrderID, Customers.CustomerName FROM Orders INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID");
+
+?>
+<!DOCTYPE html>
+<html>
+ <head>
+ <title> Retrive data</title>
+ </head>
+<body>
+<?php
+if (mysqli_num_rows($result) > 0) {
+?>
+  <table>
+  
+  <tr>
+    <td>OrderID</td>
+    <td>Customer Name</td>
+  </tr>
+<?php
+
+$i=0;
+while($row = mysqli_fetch_array($result)) {
+?>
+<tr>
+    <td><?php echo $row["OrderID"]; ?></td>
+    <td><?php echo $row["CustomerName"]; ?></td>
+
+</tr>
+<?php
+$i++;
+}
+?>
+</table>
+ <?php
+}
+else{
+    echo "No result found";
+}
+?>
+ </body>
+</html>
+
+
+getbootstrap.com/docs/4.2/components/alerts
+
+w3school.com/bootstrap4/bootstrap_get_started.asp
+
+https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js
+
+
+---------------------------------------------------------------------
+
+
+<table id="data-table">
+    
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>City</th>
+      <th>Email</th>
+    </tr>
+    <?php
+    $i=0;
+
+    while($row = mysqli_fetch_array($sql)){
+    ?>
+    <tr>
+      <td><?php echo $row["first_name"]; ?></td>
+      <td><?php echo $row["last_name"]; ?></td>
+      <td><?php echo $row["city_name"]; ?></td>
+      <td><?php echo $row["email"]; ?></td>
+    </tr>
+
+    <?php
+
+     }
+
+     ?>
+
+  </table>
+
+  <?php 
+  $i++;
+
+  }
+
+  else {
+    echo "No Results Found.";
+  }
+    ?>
+
+    <hr>
